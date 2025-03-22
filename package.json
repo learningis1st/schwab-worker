@@ -1,0 +1,15 @@
+{
+  "name": "schwab-worker",
+  "version": "1.0.0",
+  "description": "Cloudflare Worker for Schwab Market Data API",
+  "main": "worker.js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250321.0",
+    "wrangler": "^4.4.0"
+  }
+}

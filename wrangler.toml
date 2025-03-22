@@ -1,0 +1,10 @@
+name = "market-data"
+main = "worker.js"
+compatibility_date = "2025-03-21"
+
+kv_namespaces = [
+    { binding = "SCHWAB_TOKENS", id = "9f8ad802ba8b481d8dd97f482ff77105" }
+]
+
+[observability.logs]
+enabled = true
