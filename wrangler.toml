@@ -8,3 +8,4 @@ kv_namespaces = [
 
 [observability.logs]
 enabled = true
+invocation_logs = true
