@@ -45,9 +45,11 @@ export async function handleCallback(request, tokenEndpoint, clientId, clientSec
     // Store initial timestamp
     await env.SCHWAB_TOKENS.put('last_refreshed', Date.now().toString());
 
-    // Success Response
-    return new Response(
-        'Authentication Successful! Tokens stored securely.',
-        { headers: { 'Content-Type': 'text/plain' }, status: 200 }
-    );
+    // Redirect to home page
+    return new Response(null, {
+        status: 302,
+        headers: {
+            'Location': '/'
+        }
+    });
 }
