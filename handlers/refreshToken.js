@@ -42,5 +42,9 @@ export async function refreshToken(env) {
     if (newRefreshToken !== refreshTokenValue) {
         await env.SCHWAB_TOKENS.put('refresh_token', newRefreshToken);
     }
+    
+    // Store the last refresh timestamp
+    await env.SCHWAB_TOKENS.put('last_refreshed', Date.now().toString());
+    
     return newAccessToken;
 }

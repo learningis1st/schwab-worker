@@ -41,6 +41,9 @@ export async function handleCallback(request, tokenEndpoint, clientId, clientSec
     // Store Tokens Securely
     await env.SCHWAB_TOKENS.put('access_token', accessToken);
     await env.SCHWAB_TOKENS.put('refresh_token', refreshToken);
+    
+    // Store initial timestamp
+    await env.SCHWAB_TOKENS.put('last_refreshed', Date.now().toString());
 
     // Success Response
     return new Response(

@@ -1,4 +1,25 @@
-export function handleLandingPage() {
+async function checkTokenStatus(env) {
+    const accessToken = await env.SCHWAB_TOKENS.get('access_token');
+    const refreshToken = await env.SCHWAB_TOKENS.get('refresh_token');
+    const lastRefreshedTimestamp = await env.SCHWAB_TOKENS.get('last_refreshed');
+    
+    let lastRefreshed = 'Never';
+    if (lastRefreshedTimestamp) {
+        const date = new Date(parseInt(lastRefreshedTimestamp));
+        lastRefreshed = date.toLocaleString();
+    }
+    
+    return {
+        status: accessToken && refreshToken ? "authorized" : "unauthorized",
+        hasAccessToken: !!accessToken,
+        hasRefreshToken: !!refreshToken,
+        lastRefreshed: lastRefreshed
+    };
+}
+
+export async function handleLandingPage(env) {
+    const tokenStatus = await checkTokenStatus(env);
+    
     const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,6 +68,18 @@ export function handleLandingPage() {
         .btn:hover {
             background-color: #2980b9;
         }
+        .btn-danger {
+            background-color: #e74c3c;
+        }
+        .btn-danger:hover {
+            background-color: #c0392b;
+        }
+        .btn-success {
+            background-color: #2ecc71;
+        }
+        .btn-success:hover {
+            background-color: #27ae60;
+        }
         .parameter-table {
             width: 100%;
             border-collapse: collapse;
@@ -72,6 +105,13 @@ export function handleLandingPage() {
             font-family: monospace;
             font-size: 0.9em;
         }
+        .token-status {
+            margin: 15px 0;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: ${tokenStatus.status === "authorized" ? "#e8f5e9" : "#ffebee"};
+            border-left: 4px solid ${tokenStatus.status === "authorized" ? "#4caf50" : "#f44336"};
+        }
         footer {
             margin-top: 30px;
             text-align: center;
@@ -93,10 +133,20 @@ export function handleLandingPage() {
 
         <div class="section">
             <h2>Authentication</h2>
+            <div class="token-status">
+                <h3>Token Status: ${tokenStatus.status === "authorized" ? "Authorized ✓" : "Not Authorized ✗"}</h3>
+                <p>
+                    <strong>Access Token:</strong> ${tokenStatus.hasAccessToken ? "Present" : "Missing"}<br>
+                    <strong>Refresh Token:</strong> ${tokenStatus.hasRefreshToken ? "Present" : "Missing"}<br>
+                    <strong>Last Refreshed:</strong> ${tokenStatus.lastRefreshed}
+                </p>
+            </div>
             <p>
-                <a href="/authorize" class="btn">Authorize with Schwab</a>
+                <a href="/authorize" class="btn ${tokenStatus.status === "authorized" ? "" : "btn-success"}">
+                    ${tokenStatus.status === "authorized" ? "Re-Authorize with Schwab" : "Authorize with Schwab"}
+                </a>
+                ${tokenStatus.status === "authorized" ? `<a href="/clear-tokens" class="btn btn-danger">Clear Tokens & Force Re-Authorization</a>` : ""}
             </p>
-            <p>Tokens are securely stored after authorization.</p>
         </div>
 
         <div class="section">
