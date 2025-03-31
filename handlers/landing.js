@@ -112,6 +112,13 @@ export async function handleLandingPage(env) {
             background-color: ${tokenStatus.status === "authorized" ? "#e8f5e9" : "#ffebee"};
             border-left: 4px solid ${tokenStatus.status === "authorized" ? "#4caf50" : "#f44336"};
         }
+        .auth-notice {
+            margin-bottom: 15px; 
+            padding: 12px; 
+            background-color: #fff3cd; 
+            border-left: 4px solid #ffc107; 
+            border-radius: 4px;
+        }
         footer {
             margin-top: 30px;
             text-align: center;
@@ -140,6 +147,9 @@ export async function handleLandingPage(env) {
                     <strong>Refresh Token:</strong> ${tokenStatus.hasRefreshToken ? "Present" : "Missing"}<br>
                     <strong>Last Refreshed:</strong> ${tokenStatus.lastRefreshed}
                 </p>
+            </div>
+            <div class="auth-notice">
+            <strong>⚠️ Important:</strong> Schwab API requires re-authentication every 7 days as refresh tokens expire after this period. You'll need to re-authorize when tokens expire.
             </div>
             <p>
                 <a href="/authorize" class="btn ${tokenStatus.status === "authorized" ? "" : "btn-success"}">
