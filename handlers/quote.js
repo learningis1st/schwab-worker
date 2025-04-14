@@ -15,14 +15,14 @@ async function fetchQuote(symbol, fields, accessToken) {
         },
     });
 
+    const responseText = await response.text();
+
     if (!response.ok) {
-        const [responseClone1, responseClone2] = response.clone().body.tee();
-        console.error('Quote API Error:', response.status, await new Response(responseClone1).text());
-        throw new Error(`Quote API request failed: ${response.status} - ${await new Response(responseClone2).text()}`);
+        console.error('Quote API Error:', response.status, responseText);
+        throw new Error(`Quote API request failed: ${response.status} - ${responseText}`);
     }
 
-    const data = await response.json();
-    return data;
+    return JSON.parse(responseText);
 }
 
 export async function handleQuoteRequest(request, env) {
