@@ -176,12 +176,12 @@ export async function handleLandingPage(env) {
                 <tr>
                     <td>symbol</td>
                     <td>Stock symbol (required)</td>
-                    <td>Any valid stock symbol (e.g., AAPL, MSFT)</td>
+                    <td>Any valid stock symbol (e.g., <code>AAPL</code>, <code>MSFT</code>)</td>
                 </tr>
                 <tr>
                     <td>fields</td>
                     <td>Filter data by root nodes</td>
-                    <td>quote, fundamental, reference, extended, regular, all<br>(Default: all)</td>
+                    <td><code>quote</code>, <code>fundamental</code>, <code>reference</code>, <code>extended</code>, <code>regular</code>, <code>all</code><br>(Default: <code>all</code>)</td>
                 </tr>
             </table>
 
@@ -207,63 +207,63 @@ export async function handleLandingPage(env) {
                 <tr>
                     <td>symbol</td>
                     <td>Stock symbol (required)</td>
-                    <td>Any valid stock symbol (e.g., AAPL, MSFT)</td>
+                    <td>Any valid stock symbol (e.g., <code>AAPL</code>, <code>MSFT</code>)</td>
                 </tr>
                 <tr>
                     <td>periodType</td>
                     <td>Chart period type</td>
-                    <td>day, month, year, ytd</td>
+                    <td><code>day</code>, <code>month</code>, <code>year</code>, <code>ytd</code></td>
                 </tr>
                 <tr>
                     <td>period</td>
                     <td>Number of periods</td>
                     <td>
-                        day: 1, 2, 3, 4, 5, 10 (default: 10)<br>
-                        month: 1, 2, 3, 6 (default: 1)<br>
-                        year: 1, 2, 3, 5, 10, 15, 20 (default: 1)<br>
-                        ytd: 1 (default: 1)
+                        day: <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>10</code> (default: <code>10</code>)<br>
+                        month: <code>1</code>, <code>2</code>, <code>3</code>, <code>6</code> (default: <code>1</code>)<br>
+                        year: <code>1</code>, <code>2</code>, <code>3</code>, <code>5</code>, <code>10</code>, <code>15</code>, <code>20</code> (default: <code>1</code>)<br>
+                        ytd: <code>1</code> (default: <code>1</code>)
                     </td>
                 </tr>
                 <tr>
                     <td>frequencyType</td>
                     <td>Time frequency type</td>
                     <td>
-                        For day: minute<br>
-                        For month: daily, weekly<br>
-                        For year: daily, weekly, monthly<br>
-                        For ytd: daily, weekly
+                        For day: <code>minute</code><br>
+                        For month: <code>daily</code>, <code>weekly</code><br>
+                        For year: <code>daily</code>, <code>weekly</code>, <code>monthly</code><br>
+                        For ytd: <code>daily</code>, <code>weekly</code>
                     </td>
                 </tr>
                 <tr>
                     <td>frequency</td>
                     <td>Time frequency value</td>
                     <td>
-                        minute: 1, 5, 10, 15, 30<br>
-                        daily: 1<br>
-                        weekly: 1<br>
-                        monthly: 1<br>
-                        (Default for all: 1)
+                        minute: <code>1</code>, <code>5</code>, <code>10</code>, <code>15</code>, <code>30</code><br>
+                        daily: <code>1</code><br>
+                        weekly: <code>1</code><br>
+                        monthly: <code>1</code><br>
+                        (Default for all: <code>1</code>)
                     </td>
                 </tr>
                 <tr>
                     <td>startDate</td>
                     <td>Start date (milliseconds)</td>
-                    <td>Integer timestamp (e.g., 1640995200000)</td>
+                    <td>Integer timestamp (e.g., <code>1640995200000</code>)</td>
                 </tr>
                 <tr>
                     <td>endDate</td>
                     <td>End date (milliseconds)</td>
-                    <td>Integer timestamp (e.g., 1672531200000)</td>
+                    <td>Integer timestamp (e.g., <code>1672531200000</code>)</td>
                 </tr>
                 <tr>
                     <td>needExtendedHoursData</td>
                     <td>Include extended hours data</td>
-                    <td>true, false</td>
+                    <td><code>true</code>, <code>false</code></td>
                 </tr>
                 <tr>
                     <td>needPreviousClose</td>
                     <td>Include previous close</td>
-                    <td>true, false</td>
+                    <td><code>true</code>, <code>false</code></td>
                 </tr>
             </table>
             
