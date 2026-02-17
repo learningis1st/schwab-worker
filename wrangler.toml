@@ -1,0 +1,24 @@
+name = "market-data"
+main = "src/index.js"
+compatibility_date = "2026-02-16"
+
+routes = [
+    { pattern = "finance.learningis1.st", custom_domain = true }
+]
+
+kv_namespaces = [
+    { binding = "SCHWAB_TOKENS", id = "9f8ad802ba8b481d8dd97f482ff77105" }
+]
+
+preview_urls = false
+
+[triggers]
+crons = ["*/20 * * * *"]
+
+[observability.logs]
+enabled = true
+invocation_logs = true
+
+[[rules]]
+type = "Text"
+globs = ["**/*.css"]
